@@ -1,17 +1,27 @@
 package main
 
-import(
+import (
 	"io"
+	"log"
 	"net/http"
-	"os/exec"//跑一些命令
-	"log"//打印一些东西
+	"os/exec"
 )
 
-func fistPage(w http.ResponseWriter, r *http.Request){
-	io.WriteString(w, "<h1>hello, world!</h1>")
+func reLaunch() {
+	cmd := exec.Command("sh", "./deploy.sh")  //exec是go用来调用命令 ?./deploy.sh
+	err := cmd.Start()
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = cmd.Wait()
+}
+
+func firstPage(w http.ResponseWriter, r *http.Request){
+	io.WriteString(w, "<h1>hello, this is my deploy server!</h1>")
+	reLaunch()
 }
 
 func main(){
-	http.HandleFunc("/", fistPage)
-	http.ListenAndServe("5000",nil)
+	http.HandleFunc("/", firstPage)
+	http.ListenAndServe(":5000",nil)
 }
