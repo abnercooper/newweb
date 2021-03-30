@@ -5,10 +5,10 @@
 kill -9 $(pgrep webserver)
 
 # cd到云服务器对应的项目文件夹
-cd ~/workspace/src/felix_gitee/newweb/
+cd ~/workspace/src/abner_gitee/newweb/
 
-# 注意源对应准确origin-f-gitee
-git pull origin-f-gitee dev-felix
+# 注意源对应准确origin-a-gitee
+git pull origin-a-gitee dev-felix
 
 cd webserver/
 //让服务问问跑在后台不会因为关闭窗口而退出
