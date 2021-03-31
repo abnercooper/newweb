@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -19,9 +18,7 @@ func reLaunch() {
 
 func firstPage(w http.ResponseWriter, r *http.Request){
 	io.WriteString(w, "<h1>hello, this is my deploy server!</h1>")
-	fmt.Print("io-OK-n\n")
 	reLaunch()
-	fmt.Print("reLaunch-OK-m\n")
 }
 
 func main(){
